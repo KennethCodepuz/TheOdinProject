@@ -1,3 +1,17 @@
+let playerScore = 0;
+let computerScore = 0;
+
+let btns = document.querySelectorAll('button');
+btns.forEach(btn => {
+    let playerInput;
+    btn.addEventListener('click',() => {
+        playerInput = btn.dataset.element;
+        // console.log(playerInput);
+        playGame(playerInput);
+    });
+    
+});
+ 
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3);
     
@@ -10,65 +24,82 @@ function getComputerChoice() {
     }
 }
 
+function domManipulation(announce) {
+    let result = document.querySelector('.announcement');
+    result.innerHTML = announce;
+}
+
 function getPlayerChoice() {
-    let playerInput = prompt('Enter rock, paper or scissor: ').toLowerCase();
+    // let playerInput = prompt('Enter rock, paper or scissor: ').toLowerCase();
+    
+     console.log(playerInput);
 
     if (['rock', 'paper', 'scissor'].includes(playerInput)) {
         return playerInput;
     }else {
-        alert("Please pick from the choices given");
+        console.log("Please pick from the choices given");
         return getPlayerChoice();
     }
+    return playerInput;
+
 }
+console.log(getPlayerChoice());
 
-let playerScore = 0;
-let computerScore = 0;
 
-function gameLogic() {
+
+function gameLogic(playerInput) {
     let computerChoice = getComputerChoice();
-    let playerChoice = getPlayerChoice();
+    let playerChoice = playerInput;
+    console.log(computerChoice);
 
 
     if(playerChoice === 'rock' && computerChoice === 'paper'){
         computerScore++;
-        alert('Computer picked: ' + computerChoice + '\n' + 'Player picked: ' + playerChoice + '\n' + 'You lose');
+        domManipulation(`Computer picked:   ${computerChoice} <br>  Player picked:   ${playerChoice}  <br>  You lose`);
+        // console.log('Computer picked: ' + computerChoice + '<br>' + 'Player picked: ' + playerChoice + '<br>' + 'You lose');
+        // console.log(`Computer picked:   ${computerChoice} <br>  Player picked:   ${playerChoice}  <br>  You lose`);
     }else if (playerChoice === 'rock' && computerChoice === 'scissor') {
         playerScore++;
-        alert('Computer picked: ' + computerChoice + '\n' + 'Player picked: ' + playerChoice + '\n' + 'You win');
+        domManipulation(`Computer picked:   ${computerChoice} <br>  Player picked:   ${playerChoice}  <br>  You win`);
+        console.log('Computer picked: ' + computerChoice + '<br>' + 'Player picked: ' + playerChoice + '<br>' + 'You win');
     }else if (playerChoice === 'rock' && computerChoice === 'rock') {
-        alert('Computer picked: ' + computerChoice + '\n' + 'Player picked: ' + playerChoice + '\n' + 'Tie');
+        domManipulation(`Computer picked:   ${computerChoice} <br>  Player picked:   ${playerChoice}  <br> Tie`);
+        // console.log('Computer picked: ' + computerChoice + '<br>' + 'Player picked: ' + playerChoice + '<br>' + 'Tie');
     }
     
     if(playerChoice === 'paper' && computerChoice === 'paper'){
-        alert('Computer picked: ' + computerChoice + '\n' + 'Player picked: ' + playerChoice + '\n' + 'Tie');
+        domManipulation(`Computer picked:   ${computerChoice} <br>  Player picked:   ${playerChoice}  <br>  Tie!`);
+        // console.log('Computer picked: ' + computerChoice + '<br>' + 'Player picked: ' + playerChoice + '<br>' + 'Tie');
     }else if (playerChoice === 'paper' && computerChoice === 'scissor') {
         computerScore++;
-        alert('Computer picked: ' + computerChoice + '\n' + 'Player picked: ' + playerChoice + '\n' + 'You lose');
+        domManipulation(`Computer picked:   ${computerChoice} <br>  Player picked:   ${playerChoice}  <br>  You lose`);
+        console.log('Computer picked: ' + computerChoice + '<br>' + 'Player picked: ' + playerChoice + '<br>' + 'You lose');
     }else if (playerChoice === 'paper' && computerChoice === 'rock') {
         playerScore++;
-        alert('Computer picked: ' + computerChoice + '\n' + 'Player picked: ' + playerChoice + '\n' + 'You win');
+        domManipulation(`Computer picked:   ${computerChoice} <br>  Player picked:   ${playerChoice}  <br>  You win`);
+        // console.log('Computer picked: ' + computerChoice + '<br>' + 'Player picked: ' + playerChoice + '<br>' + 'You win');
     }
     
     if(playerChoice === 'scissor' && computerChoice === 'paper'){
         playerScore++;
-        alert('Computer picked: ' + computerChoice + '\n' + 'Player picked: ' + playerChoice + '\n' + 'You win');
+        // domManipulation(`Computer picked:   ${computerChoice} <br>  Player picked:   ${playerChoice}  <br>  You win`);
+        console.log('Computer picked: ' + computerChoice + '<br>' + 'Player picked: ' + playerChoice + '<br>' + 'You win');
     }else if (playerChoice === 'scissor' && computerChoice === 'scissor') {
-        alert('Computer picked: ' + computerChoice + '\n' + 'Player picked: ' + playerChoice + '\n' + 'Tie');
+        domManipulation(`Computer picked:   ${computerChoice} <br>  Player picked:   ${playerChoice}  <br>  Tie`);
+        // console.log('Computer picked: ' + computerChoice + '<br>' + 'Player picked: ' + playerChoice + '<br>' + 'Tie');
     }else if (playerChoice === 'scissor' && computerChoice === 'rock') {
         computerScore++;
-        alert('Computer picked: ' + computerChoice + '\n' + 'Player picked: ' + playerChoice + '\n' + 'You lose');
+        domManipulation(`Computer picked:   ${computerChoice} <br>  Player picked:   ${playerChoice}  <br>  You lose`);
+        // console.log('Computer picked: ' + computerChoice + '<br>' + 'Player picked: ' + playerChoice + '<br>' + 'You lose');
     }
     
-    console.log('Score \n' + 'Computer ' + computerScore + '\n' + 'Player ' + playerScore);
+    // console.log('Score <br>' + 'Computer ' + computerScore + '<br>' + 'Player ' + playerScore);
+    let scoreBoard = document.querySelector('.score');
+    scoreBoard.innerHTML = `<h2>Score</h2> Computer ${computerScore} <br> Player  ${playerScore}`;
 }
 
-function playGame() {
-    let round = 0;
-
-    while (round < 5) {
-        gameLogic();
-        round++;
-    }
+function playGame(playerInput) {
+    gameLogic(playerInput);
 }
 console.log(getComputerChoice());
 playGame();

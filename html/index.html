@@ -4,8 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        button {
+            width: 200px;
+            height: 200px;
+            font-size: 5em;
+            background-color: black;
+            border: solid 8px orange;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+    <button data-element="rock">&#128074</button>
+    <button data-element="paper">&#x1F590</button>
+    <button data-element="scissor">&#9996</button>
+    <div class="announcement"></div>
+    <div class="score"></div>
     
     <script src="../js/rockpaperscisors.js"></script>
 </body>
