@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: rgb(203, 229, 252);
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#etchasketch {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: auto; margin-right: auto;
+    overflow: hidden;
+}
+
+.cell {
+    border: solid 1px whitesmoke;
+    box-sizing: border-box;
+}
+
+.gridSize {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 50px;
+}
+
+.sizeValue {
+    width: 50px;
+}
+
+.sizeButton, .reset {
+    font-size: .6em;
+    width: 50px;
+    height: 20px;
+    border-radius: 30px;
+    border: solid 1px black ;
+    cursor: pointer;
+}
+
+.reset {
+    margin-right: 10px;
+}

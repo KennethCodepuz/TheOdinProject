@@ -39,7 +39,7 @@ space.addEventListener('mousemove', (event) => {
         space.appendChild(flower);
         flower.setAttribute('style', `top: ${lastY}px; left: ${lastX}px;`);
     }
-    childrenLimit(20);
+    childrenLimit(20git);
 });
 
 function childrenLimit(count) {
