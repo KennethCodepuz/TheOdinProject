@@ -40,10 +40,10 @@ body {
     width: 50px;
 }
 
-.sizeButton, .reset {
-    font-size: .6em;
-    width: 50px;
-    height: 20px;
+.btn {
+    
+    width: 70px;
+    height: 24px;
     border-radius: 30px;
     border: solid 1px black ;
     cursor: pointer;
@@ -51,4 +51,11 @@ body {
 
 .reset {
     margin-right: 10px;
+    margin-left: 10px;
 }
+.color-palette {
+    margin-right: 10px;
+    margin-left: 10px;
+    background-image: linear-gradient(to right,rgb(239, 110, 131), white, blue);
+}
+

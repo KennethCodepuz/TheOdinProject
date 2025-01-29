@@ -1,19 +1,25 @@
 const gridSize = 600;
 let gridCellSize = 16;
 
+let color = 'black';
 let lastX;
 let lastY;
+
 
 let sketchArea = document.querySelector('#etchasketch');
 sketchArea.style.width = `${gridSize}px`;
 sketchArea.style.height = `${gridSize}px`;
 
-
-
+let randomBtn = document.querySelector('.color-palette');
+randomBtn.addEventListener('click', () => {
+    let element = document.querySelector('.color-palette').textContent;
+    console.log(element);
+    randomColor(element);
+});
 
 
 function changeBackgroundColor() {
-    this.style.backgroundColor = 'black';
+    this.style.backgroundColor = color;
 }
 
 function createGrid(gridCellValue) {
@@ -39,6 +45,21 @@ function createGrid(gridCellValue) {
     }
 }
 
+function randomColor(random) {
+    if (random === 'random') {
+        color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    }
+
+}
+
+let eraserbtn = document.querySelector('#eraser-btn');
+eraserbtn.addEventListener('click', () => {
+    if(color === 'black') {
+        color = 'white';
+    }else {
+        color = 'black';
+    }
+});
 
 let sizeBtn = document.querySelector('#setSize');
 sizeBtn.addEventListener('click', () => {
